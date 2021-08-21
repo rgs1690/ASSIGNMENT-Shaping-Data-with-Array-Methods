@@ -117,8 +117,32 @@ renderToDom = (divId, textToPrint) => {
 const outEl = document.querySelector("#output");
 outEl.innerHTML = "<h1>Active Businesses</h1>";
 
+// array.forEach(business => {
+//   outEl.innerHTML += `
+//     <h2>${business.companyName}</h2>
+//     <section>
+//       ${business.addressFullStreet}
+//     </section>
+//     <section>
+//              ${business.addressCity}
+//          </section>
+//          <section>
+//              ${business["addressStateCode"]}
+//          </section>
+//          <section>
+//              ${business["addressZipCode"]}
+//          </section>
+//     `
+//   outEl.innerHTML += "<hr/>"
+// });
+const filterBuisness = (array, industry) => {
 
-businesses.forEach(business => {
+return array.filter((buisness) => buisness.companyIndustry === industry); 
+};
+
+const manufacturing = filterBuisness(businesses, "Manufacturing")
+
+manufacturing.forEach(business => {
   outEl.innerHTML += `
     <h2>${business.companyName}</h2>
     <section>
