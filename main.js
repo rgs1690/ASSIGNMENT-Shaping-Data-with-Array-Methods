@@ -167,29 +167,31 @@ outEl.innerHTML = "<h1>Active Businesses</h1>";
 //   outEl.innerHTML += "<hr/>"
 // });
 //-------------------------------## map--------------------------------
+
 //> **Lightning Exercise:** Instead of just returning the purchasing agent object, return a new object that has the full 
 //name of the purchasing agent,the company name, and the phone number. 
 //The data structure is shown below. Use that new data structure to display the agent with their company and phone number
-const agObj = businesses.map(business =>(
-  {
-    'fullName': business.purchasingAgent.nameFirst + " " + business.purchasingAgent.nameLast,
-    'company' : business.companyName,
-    'phoneNumber' : business.phoneWork
 
-  }
-));
+// const agObj = businesses.map(business =>(
+//   {
+//     'fullName': business.purchasingAgent.nameFirst + " " + business.purchasingAgent.nameLast,
+//     'company' : business.companyName,
+//     'phoneNumber' : business.phoneWork
 
-agObj.forEach((obj) => {
-outEl.innerHTML += `
-<h2>${obj.fullName}</h2>
-<section> ${obj.company}
-</section>
-<section>
-  ${obj.phoneNumber}
-</section>`
+//   }
+// ));
 
-outEl.innerHTML += "<hr/>";
-});
+// agObj.forEach((obj) => {
+// outEl.innerHTML += `
+// <h2>${obj.fullName}</h2>
+// <section> ${obj.company}
+// </section>
+// <section>
+//   ${obj.phoneNumber}
+// </section>`
+
+// outEl.innerHTML += "<hr/>";
+// });
 
 
 
@@ -223,29 +225,56 @@ outEl.innerHTML += "<hr/>";
 // });
 // **Lightning Exercise 2:** Refactor your code so that if the search text is found in the first name, or last name,
 // of any purchasing agent, show that agent.
-document
-.querySelector("#companySearch")
-.addEventListener("keypress", keyPressEvent => {
-    if (keyPressEvent.charCode === 13) {
-        /* WHEN  USER PRESSES ENTER, FIND MATCHING BUSINESS */
-        const foundBusiness = businesses.find(
-            business =>
-                business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) || business.purchasingAgent.nameLast.includes(keyPressEvent.target.value)
-        );
+// document
+// .querySelector("#companySearch")
+// .addEventListener("keypress", keyPressEvent => {
+//     if (keyPressEvent.charCode === 13) {
+//         /* WHEN  USER PRESSES ENTER, FIND MATCHING BUSINESS */
+//         const foundBusiness = businesses.find(
+//             business =>
+//                 business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) || business.purchasingAgent.nameLast.includes(keyPressEvent.target.value)
+//         );
 
-        outEl.innerHTML = `
-            <h2>
-            ${foundBusiness.companyName}
-            </h2>
-            <section>
-            ${foundBusiness.addressFullStreet}
+//         outEl.innerHTML = `
+//             <h2>
+//             ${foundBusiness.companyName}
+//             </h2>
+//             <section>
+//             ${foundBusiness.addressFullStreet}
 
-            </section>
-            <section>
-            ${foundBusiness.addressCity},
-            ${foundBusiness.addressStateCode}
-            ${foundBusiness.addressZipCode}
-            </section>
-        `;
-    }
-});
+//             </section>
+//             <section>
+//             ${foundBusiness.addressCity},
+//             ${foundBusiness.addressStateCode}
+//             ${foundBusiness.addressZipCode}
+//             </section>
+//         `;
+//     }
+// });
+
+//-----------------------------## reduce------------------------
+
+// let totalOrders = business.orders.reduce(
+//   (currentTotal, nextValue) => currentTotal += nextValue,
+//   0
+// )
+// **Lightning Exercise 1:** Use the reduce method on the following array to determine how much total rain fell last month.
+
+
+const monthlyRainfall = [23, 13, 27, 20, 20, 31, 33, 26, 19, 12, 14, 12, 10]
+
+const totalRainfall = monthlyRainfall.reduce(
+  (currentTotal, nextValue) => currentTotal += nextValue, 0
+)
+
+console.log(totalRainfall)
+
+// **Lightning Exercise 2:** Use the reduce method on the following array to build a sentence.
+
+const words = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+
+const sentence = words.reduce(
+  (currentTotal, nextValue) => currentTotal += nextValue, ""
+);
+
+console.log(sentence)
