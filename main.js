@@ -117,6 +117,8 @@ renderToDom = (divId, textToPrint) => {
 const outEl = document.querySelector("#output");
 outEl.innerHTML = "<h1>Active Businesses</h1>";
 
+
+//-------------------- ## forEach() Method-----------------------------------
 // array.forEach(business => {
 //   outEl.innerHTML += `
 //     <h2>${business.companyName}</h2>
@@ -135,28 +137,124 @@ outEl.innerHTML = "<h1>Active Businesses</h1>";
 //     `
 //   outEl.innerHTML += "<hr/>"
 // });
-const filterBuisness = (array, industry) => {
+// 
 
-return array.filter((buisness) => buisness.companyIndustry === industry); 
-};
+//--------------------------------## filter() Method------------------------------
 
-const manufacturing = filterBuisness(businesses, "Manufacturing")
+// const filterBuisness = (array, industry) => {
 
-manufacturing.forEach(business => {
-  outEl.innerHTML += `
-    <h2>${business.companyName}</h2>
-    <section>
-      ${business.addressFullStreet}
-    </section>
-    <section>
-             ${business.addressCity}
-         </section>
-         <section>
-             ${business["addressStateCode"]}
-         </section>
-         <section>
-             ${business["addressZipCode"]}
-         </section>
-    `
-  outEl.innerHTML += "<hr/>"
+// return array.filter((buisness) => buisness.companyIndustry === industry); 
+// };
+
+// const manufacturing = filterBuisness(businesses, "Manufacturing")
+
+// manufacturing.forEach(business => {
+//   outEl.innerHTML += `
+//     <h2>${business.companyName}</h2>
+//     <section>
+//       ${business.addressFullStreet}
+//     </section>
+//     <section>
+//              ${business.addressCity}
+//          </section>
+//          <section>
+//              ${business["addressStateCode"]}
+//          </section>
+//          <section>
+//              ${business["addressZipCode"]}
+//          </section>
+//     `
+//   outEl.innerHTML += "<hr/>"
+// });
+//-------------------------------## map--------------------------------
+
+
+// const agents = businesses.map(business => {
+//   return business.purchasingAgent
+// })
+
+// console.table(agents)
+
+// agents.forEach(agent => {
+// outEl.innerHTML += `<h2>${agent.nameFirst} ${agent.nameLast}</h2>`;
+// outEl.innerHTML += "<hr/>";
+// });
+
+
+// outEl.innerHTML += "<h1>Purchasing Agents</h1>";
+// const agents = businesses.map(business => {
+//     return business.purchasingAgent
+// })
+
+// console.table(agents)
+
+// agents.forEach(agent => {
+//   outEl.innerHTML += `
+//     <h2>${agent.nameFirst} ${agent.nameLast}</h2>
+//     <section>
+//       ${agent.companyName}
+//     </section>
+//     <section>
+//              ${agent.phoneWork}
+//          </section>
+//           `;
+  
+//   outEl.innerHTML += "<hr/>";
+// });
+
+//---------------------------## find---------------------------------
+//**Lightning Exercise 1:** Refactor your code to search for purchasing agents instead. 
+// document
+// .querySelector("#companySearch")
+// .addEventListener("keypress", keyPressEvent => {
+//     if (keyPressEvent.charCode === 13) {
+//         /* WHEN  USER PRESSES ENTER, FIND MATCHING BUSINESS */
+//         const foundBusiness = businesses.find(
+//             business =>
+//                 business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value)
+//         );
+
+//         outEl.innerHTML = `
+//             <h2>
+//             ${foundBusiness.companyName}
+//             </h2>
+//             <section>
+//             ${foundBusiness.addressFullStreet}
+
+//             </section>
+//             <section>
+//             ${foundBusiness.addressCity},
+//             ${foundBusiness.addressStateCode}
+//             ${foundBusiness.addressZipCode}
+//             </section>
+//         `;
+//     }
+// });
+// **Lightning Exercise 2:** Refactor your code so that if the search text is found in the first name, or last name,
+// of any purchasing agent, show that agent.
+document
+.querySelector("#companySearch")
+.addEventListener("keypress", keyPressEvent => {
+    if (keyPressEvent.charCode === 13) {
+        /* WHEN  USER PRESSES ENTER, FIND MATCHING BUSINESS */
+        const foundBusiness = businesses.find(
+            business =>
+                business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) || business.purchasingAgent.nameLast.includes(keyPressEvent.target.value)
+        );
+
+        outEl.innerHTML = `
+            <h2>
+            ${foundBusiness.companyName}
+            </h2>
+            <section>
+            ${foundBusiness.addressFullStreet}
+
+            </section>
+            <section>
+            ${foundBusiness.addressCity},
+            ${foundBusiness.addressStateCode}
+            ${foundBusiness.addressZipCode}
+            </section>
+        `;
+    }
 });

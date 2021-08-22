@@ -220,6 +220,7 @@ const newYorkBusinesses = businesses.filter(business => {
 
 #### Example output
 
+
 ![manufacturing businesses list](./dotard-simbleton-manufacturing-list.png)
 
 ## map
