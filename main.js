@@ -167,40 +167,31 @@ outEl.innerHTML = "<h1>Active Businesses</h1>";
 //   outEl.innerHTML += "<hr/>"
 // });
 //-------------------------------## map--------------------------------
+//> **Lightning Exercise:** Instead of just returning the purchasing agent object, return a new object that has the full 
+//name of the purchasing agent,the company name, and the phone number. 
+//The data structure is shown below. Use that new data structure to display the agent with their company and phone number
+const agObj = businesses.map(business =>(
+  {
+    'fullName': business.purchasingAgent.nameFirst + " " + business.purchasingAgent.nameLast,
+    'company' : business.companyName,
+    'phoneNumber' : business.phoneWork
+
+  }
+));
+
+agObj.forEach((obj) => {
+outEl.innerHTML += `
+<h2>${obj.fullName}</h2>
+<section> ${obj.company}
+</section>
+<section>
+  ${obj.phoneNumber}
+</section>`
+
+outEl.innerHTML += "<hr/>";
+});
 
 
-// const agents = businesses.map(business => {
-//   return business.purchasingAgent
-// })
-
-// console.table(agents)
-
-// agents.forEach(agent => {
-// outEl.innerHTML += `<h2>${agent.nameFirst} ${agent.nameLast}</h2>`;
-// outEl.innerHTML += "<hr/>";
-// });
-
-
-// outEl.innerHTML += "<h1>Purchasing Agents</h1>";
-// const agents = businesses.map(business => {
-//     return business.purchasingAgent
-// })
-
-// console.table(agents)
-
-// agents.forEach(agent => {
-//   outEl.innerHTML += `
-//     <h2>${agent.nameFirst} ${agent.nameLast}</h2>
-//     <section>
-//       ${agent.companyName}
-//     </section>
-//     <section>
-//              ${agent.phoneWork}
-//          </section>
-//           `;
-  
-//   outEl.innerHTML += "<hr/>";
-// });
 
 //---------------------------## find---------------------------------
 //**Lightning Exercise 1:** Refactor your code to search for purchasing agents instead. 
